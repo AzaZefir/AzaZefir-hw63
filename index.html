@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hw63</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 150px;
+            height: 40px;
+            cursor: pointer;
+            background-color: chartreuse;
+            border-radius: 10px;
+        }
+        .table{
+            border: 2px solid black;
+            width: 150px;
+        }
+        tr,
+        td,
+        th {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <h1>Name</h1><input type="text" name="name" placeholder="name" value="">
+        <h1>Last name</h1><input type="text" name="lastName" placeholder="lastName" value="">
+        <h1>Age</h1><input type="text" name="age" placeholder="age" value="">
+        <h1>Position</h1><input type="text" name="position" placeholder="position" value="">
+        <br>
+        <button type="button">send form</button>
+    </form>
+
+
+
+    <script>
+        let form = document.forms[0];
+
+        const btn = document.querySelector("button").addEventListener("click", () => {
+
+            let name = form.name.value;
+            let lastName = form.lastName.value;
+            let age = form.age.value;
+            let position = form.position.value;
+
+            let userInfo = new WeakSet();
+            userInfo.add({
+                name,
+                lastName,
+                age,
+                position,
+            });
+            
+            console.log(userInfo);
+
+            let table = document.createElement('table');
+            table.innerHTML = `
+                <tr>
+                    <th>${name}</th>
+                    <th>${lastName}</th>
+                    <th>${age}</th>
+                    <th>${position}</th>
+                </tr>
+            `;
+
+            document.body.append(table);
+        });
+    </script>
+</body>
+
+</html>
